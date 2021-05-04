@@ -2,7 +2,7 @@
 APP = matrixMul
 
 # SOURCE FILES
-APP_SRCS = main.c cluster.c kernels.c
+APP_SRCS = main.c cluster.c kernels.c kernelspar.c
 
 # NUMBER OF USED CLUSTER CORES
 CORES ?= 1

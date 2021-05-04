@@ -1,16 +1,21 @@
 #include "pmsis.h"
 #include "perf.h"
 
-#define N 32
+#define N 512
 
 
 // APPLICATION DATA
-PI_L1 int vectA[N];
-PI_L1 int vectB[N];
-PI_L1 int vectC[N];
+PI_L2 int vectA[N];
+PI_L2 int vectB[N];
+PI_L2 int vectC[N];
 
 
-void vectAdd(int * pSrcA, int  * pSrcB, int * pDstC, int n);
+#if NUM_CORES == 1
+  void vectAdd(int * pSrcA, int  * pSrcB, int * pDstC, int n);
+#else
+  // this must be designed!
+  void vectAddPar(int * pSrcA, int  * pSrcB, int * pDstC, int n);
+#endif
 
 
 // Helper functions
@@ -57,8 +62,11 @@ void cluster_fn() {
   START_STATS();
 
   // workload
+#if NUM_CORES == 1
   vectAdd(vectA, vectB, vectC, n);
-
+#else
+  vectAddPar(vectA, vectB, vectC, n);
+#endif
   // stop measuring
   STOP_STATS();
 

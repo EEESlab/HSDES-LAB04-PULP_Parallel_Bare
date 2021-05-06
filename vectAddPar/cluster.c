@@ -41,7 +41,7 @@ unsigned int vect_check(int * C, int size) {
   if (errors==0)
     printf("Checksum is OK!\n");
   else
-    printf("Total Number of errrors is %d\n");
+    printf("Total Number of errrors is %d\n", errors);
   return errors;
 }
 

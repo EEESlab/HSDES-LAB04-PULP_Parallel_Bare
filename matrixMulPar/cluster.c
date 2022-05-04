@@ -66,7 +66,10 @@ void cluster_fn() {
   ENTER_STATS_LOOP();
   
   // set initial values (not considered by performance counters)
-  matrix_init(matA, matB, matC);
+  if(pi_core_id() == 0){
+    matrix_init(matA, matB, matC);
+  }
+  pi_cl_team_barrier();
 
   // start measuring
   START_STATS();
@@ -82,6 +85,14 @@ void cluster_fn() {
 
 #ifdef DEBUG  
   // check the result (optional)
-  matrix_check(matC);
+  unsigned int errors = 0;
+  if(pi_core_id() == 0){
+      errors = matrix_check(matC);
+      if(errors)
+        printf("Checksum NOT OK!\n");
+      else
+        printf("Checksum OK!!\n");
+  }
+  pi_cl_team_barrier();
 #endif  
 }

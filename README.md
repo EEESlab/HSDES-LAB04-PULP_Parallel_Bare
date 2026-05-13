@@ -1,10 +1,9 @@
-# HSDES-LAB04: Parallel programming on PULP using the low-level API
+# HSDES-LAB03: Parallel programming on PULP using the low-level API
 
 The goals of this lab session are:
-1) Parallelize of a matrix multiplication kernel
-2) Implement and parallelize a matrix addition kernel
+1) Implement and parallelize a vector addition kernel
+2) Parallelize a matrix multiplication kernel
 3) Parallelize an algorithm with data dependencies
-4) Parallelize an unrolled matrix multiplication
 
 
 ## Getting Started

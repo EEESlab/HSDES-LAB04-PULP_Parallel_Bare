@@ -1,8 +1,7 @@
 #include "pmsis.h"
 
-// SEQUENTIAL VERSION
-void vectAdd(int * pSrcA, int  * pSrcB, int * pDstC, int n)
-{
+// Sequential version
+void vectAdd(int * pSrcA, int  * pSrcB, int * pDstC, int n) {
     int i;
     for (i = 0; i < n; i++) {
         pDstC[i] = pSrcA[i] + pSrcB[i];
@@ -10,17 +9,15 @@ void vectAdd(int * pSrcA, int  * pSrcB, int * pDstC, int n)
     }
 }
 
-// PARALLEL VERSION
-void vectAddPar(int * pSrcA, int  * pSrcB, int * pDstC, int n)
-{
+// Parallel version
+void vectAddPar(int * pSrcA, int  * pSrcB, int * pDstC, int n) {
     int i;
-    // GET CORE ID / COMPUTE BOUNDS
+    // TODO: GET CORE ID / COMPUTE BOUNDS
 
-    // FIX THE ITERATION SPACE
-    for (i = 0 ; i < n; i++) {
+    // TODO: FIX THE ITERATION SPACE
+    for (i = 0; i < n; i++) {
         pDstC[i] = pSrcA[i] + pSrcB[i];
-        
     }
 
-    // ADD A BARRIER
+    // TODO: ADD A BARRIER
 }
